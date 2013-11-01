@@ -1,0 +1,58 @@
+﻿@using Batch2Work.Models
+@model TreeModel
+
+@{
+    Layout = null;
+}
+
+<div>
+@(Html.Kendo().TreeView()
+    .Name("treeview") 
+    .Items(root =>
+    {
+        foreach (var buildingNode in Model.RootNodes)
+        {
+            root.Add().Text(buildingNode.Name)
+                .ImageUrl(Url.Content(buildingNode.ImageUrl))
+                .SpriteCssClasses("folder")
+                .Expanded(true)
+                .Items(floors =>
+                {
+                    foreach (var floorNode in buildingNode.ChildNodes)
+                    {
+                        floors.Add().Text(floorNode.Name)
+                            .ImageUrl(Url.Content(floorNode.ImageUrl))
+                            .Expanded(true)
+                            .SpriteCssClasses("folder")
+                            .Items(areas =>
+                            {
+                                foreach (var areaNode in floorNode.ChildNodes)
+                                {
+                                    areas.Add().Text(areaNode.Name)
+                                        .ImageUrl(Url.Content(areaNode.ImageUrl))
+                                        .Expanded(true)
+                                        .SpriteCssClasses("folder")
+                                        .Items(items =>
+                                        {
+                                            foreach (var itemNode in areaNode.ChildNodes)
+                                            {
+                                                items.Add().Text(itemNode.Name)
+                                                    .ImageUrl(Url.Content(itemNode.ImageUrl))
+                                                    .Expanded(true)
+                                                    .SpriteCssClasses("folder")
+                                                ;
+                                            }
+
+                                        })
+                                    ;
+                                }
+
+                            })
+                        ;
+                    }
+                })
+            ;
+          };
+      })
+)
+</div>

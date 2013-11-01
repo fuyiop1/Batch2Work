@@ -1,0 +1,72 @@
+﻿@using Batch2Work.Models
+@model ViewerModel
+
+@{
+    Layout = null;
+}
+
+<div >
+    <div class="align-right">
+        <a href="javascript:void(0)" onclick=""><i class="icon-download-alt"></i>  Change grid size</a>
+    </div>
+</div>
+
+<div style="margin-top: 20px">
+    
+    <object id=CADViewX classid=CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}  name="CADViewX" height="850" width="1000">
+        <param NAME="AutoScroll" VALUE="-1">
+        <param NAME="AutoSize" VALUE="-1">
+        <param NAME="AxBorderStyle" VALUE="0">
+        <param NAME="Caption" VALUE="CADViewX Control">
+        <param NAME="Color" VALUE="8421504">
+        <param NAME="KeyPreview" VALUE="-1">
+        <param NAME="PixelsPerInch" VALUE="96">
+        <param NAME="PrintScale" VALUE="1">
+        <param NAME="Scaled" VALUE="-1">
+        <param NAME="DropTarget" VALUE="0">
+        <param NAME="ScreenSnap" VALUE="0">
+        <param NAME="SnapBuffer" VALUE="10">
+        <param NAME="DoubleBuffered" VALUE="-1">
+        <param NAME="Enabled" VALUE="-1">
+        <param NAME="ToolBarVisible" VALUE="0">
+        <param NAME="LayoutIndex" VALUE="0">
+        <param NAME="LayoutsBarVisible" VALUE="0">
+        <param NAME="SelfPopupMenu" VALUE="0">
+        <param NAME="IsWithoutBorder" VALUE="0">
+        <param NAME="Millimetres" VALUE="0">
+        <param NAME="UseSHXFonts" VALUE="-1">
+        <param NAME="SearchSHXPaths" VALUE="-1">
+        <param NAME="DefaultSHXPath" VALUE="">
+        <param NAME="DefaultSHXFont" VALUE="txt.shx">
+        <param NAME="SHXSearchPaths" VALUE="">
+        <param NAME="BackGroundColor" VALUE="16777215">
+        <param NAME="DrawMode" VALUE="0">
+        <param NAME="DefaultColor" VALUE="0">
+        <param NAME="PrinterIndex" VALUE="1">
+        <param NAME="PaperOrientation" VALUE="1">
+        <param NAME="BorderWidth" VALUE="0">
+        <param NAME="VisibleOrbit3D" VALUE="0">
+        <param NAME="RasterColorDepth" VALUE="3">
+        <param NAME="ScaleFactor" VALUE="0.997523866826795">
+        <param NAME="ImageAlign" VALUE="5">
+        <param NAME="Language" VALUE="English">
+        <param NAME="PrintViewArea" VALUE="0">
+        <param NAME="IsShowPrinterSetupDialog" VALUE="0">
+        <param NAME="HScrollBarVisible" VALUE="0">
+        <param NAME="VScrollBarVisible" VALUE="0">
+        <param NAME="Font" VALUE="MS Sans Serif">
+        <param NAME="Visible" VALUE="0">
+        <param NAME="Picture" VALUE="-515497352">
+        <param NAME="PrintingTitle" VALUE="CADViewX printing">
+        <param NAME="FileName" VALUE="@Model.FileUrl">
+
+    </object>
+
+</div>
+
+<script>
+    var cadViewX = document.getElementById('CADViewX');
+    if (!(cadViewX == null)) {
+        cadViewX.DoToolButtonClick(4);
+    };
+</script>

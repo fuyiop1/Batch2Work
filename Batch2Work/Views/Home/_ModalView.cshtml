@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch  modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+        <div class="modal-body">
+            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Floor</td>
+                        <td>Area</td>
+                        <td>Item</td>
+                        <td>Condition</td>
+                        <td>New 1</td>
+                        <td>New 2</td>
+                        <td>New 3</td>
+                        <td>New 4</td>
+                    </tr>
+                </thead>
+
+                <tbody id="buildings-list-body">
+                    @for (int i = 0; i <= 50; i++)
+                    {
+                        <tr>
+                            <td>Floor @i</td>
+                            <td>Area @i</td>
+                            <td>Item @i</td>
+                            <td>Condition @i</td>
+                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
+                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
+                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
+                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
+                        </tr>
+                    }    
+                </tbody>
+            </table>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

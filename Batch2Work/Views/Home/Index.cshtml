@@ -1,0 +1,34 @@
+﻿@using Batch2Work.Models;
+@model Batch2Work.Models.IndexModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <ol class="breadcrumb">
+      <li><a href="#">Buildings</a></li>
+      <li class="active">Current Building</li>
+    </ol>
+</div>
+
+<div>
+    <ul class="nav nav-pills">
+        @foreach (var navItem in Model.NavItems)
+        {
+            if (navItem.IsSelected)
+            {
+                <li class="active"><a href="@Url.Action(@navItem.ActionName)">@navItem.Name</a></li>              
+            }
+            else
+            {
+                <li><a href="@Url.Action(@navItem.ActionName)">@navItem.Name</a></li>                    
+            }
+        }      
+    </ul>
+</div>
+
+<div>
+    @Html.Partial(Model.PartialView, Model.ViewModel)
+</div>

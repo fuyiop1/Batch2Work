@@ -1,0 +1,31 @@
+﻿<div style="margin-top: 20px">
+    @(Html.Kendo().Splitter()
+        .Name("splitter")
+        .Orientation(SplitterOrientation.Vertical)
+        .Panes(verticalPanes =>
+        {
+            verticalPanes.Add()
+                .HtmlAttributes(new { id = "top-pane" })
+                .Scrollable(false)
+                .Collapsible(false)
+                .Content(
+                Html.Kendo().Splitter()
+                    .Name("horizontal")
+                    .Panes(horizontalPanes =>
+                    {
+                        horizontalPanes.Add()
+                            .HtmlAttributes(new { id = "left-pane" })
+                            .Size("250px")
+                            .Collapsible(true)
+                            .LoadContentFrom("GetTreeContents", "Tree");
+
+
+                        horizontalPanes.Add()
+                            .HtmlAttributes(new { id = "center-pane" })
+                            .LoadContentFrom("GetDetails", "Tree");
+    
+                    }).ToHtmlString()
+                );
+        })
+      )
+</div>
