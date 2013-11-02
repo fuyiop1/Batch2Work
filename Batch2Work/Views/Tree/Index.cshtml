@@ -7,7 +7,9 @@
 
 <div>
 @(Html.Kendo().TreeView()
-    .Name("treeview") 
+    .Name("treeview")
+    //.Template("displayNode")
+    .Template("<span class='text-container' title='#= item.text #'>#= item.text #</span>")
     .Items(root =>
     {
         foreach (var buildingNode in Model.RootNodes)

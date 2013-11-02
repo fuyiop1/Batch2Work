@@ -1,5 +1,35 @@
-﻿<div style="margin-top: 20px">
+﻿<style type="text/css">
+    #spliterContainer {
+        margin-top: 20px;
+        position:relative;
+    }
+    .loading-wrapper {
+        background-color:#fff;
+        background-image:url(/Content/images/loading.gif);
+        background-size:contain;
+        background-position:center center;
+        background-repeat:no-repeat;
+        position:absolute;
+        z-index:100;
+        left:1px;
+        top:1px;
+        right:1px;
+        bottom:1px;
+    }
+    #splitter {
+        height:100%;
+    }
+    #horizontal {
+        height:100%;
+    }
+    .score-text {
+        text-decoration:line-through;
+    }
+</style>
+<div id="spliterContainer">
+    <div class="loading-wrapper"></div>
     @(Html.Kendo().Splitter()
+        //.Events(e => e.ContentLoad("resizeSplitter"))
         .Name("splitter")
         .Orientation(SplitterOrientation.Vertical)
         .Panes(verticalPanes =>
@@ -10,9 +40,11 @@
                 .Collapsible(false)
                 .Content(
                 Html.Kendo().Splitter()
+                    .Events(e => e.ContentLoad("splitter_ContentLoad"))
                     .Name("horizontal")
                     .Panes(horizontalPanes =>
                     {
+                        
                         horizontalPanes.Add()
                             .HtmlAttributes(new { id = "left-pane" })
                             .Size("250px")
@@ -29,3 +61,38 @@
         })
       )
 </div>
+
+<script type="text/javascript">
+    resizeSplitter();
+
+    function resizeSplitter() {
+        var spaceHeight = $(window).innerHeight() - $(document.body).outerHeight();
+
+        var container = $("#spliterContainer");
+        var targetHeight = parseInt(container.css("height").replace("px", "")) + spaceHeight;
+        container.css("height", targetHeight + "px");
+
+    }
+
+    var splitterLoadedContent = 0;
+
+    function splitter_ContentLoad() {
+        splitterLoadedContent++;
+        if (splitterLoadedContent == 2) {
+            processText();
+            hideLoading();
+            splitterLoadedContent = 0;
+        }
+    }
+
+    function processText() {
+        $("img.k-image[src='@Url.Content("~/Content/images/flag_red.png")']").each(function () {
+            var sender = $(this);
+            sender.siblings(".text-container").addClass("score-text");
+        })
+    }
+
+    function hideLoading() {
+        $(".loading-wrapper").addClass("hide");
+    }
+</script>
