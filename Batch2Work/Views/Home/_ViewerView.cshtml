@@ -5,17 +5,29 @@
     Layout = null;
 }
 
-<div >
+<style type="text/css">
+    #cadContainer {
+        height:800px;
+    }
+    #CADViewX {
+        width:99.8%;
+        border:1px solid #000;
+        height:99.8%;
+    }
+</style>
+
+<div>
     <div class="align-right">
         <a href="javascript:void(0)" onclick=""><i class="icon-download-alt"></i>  Change grid size</a>
+        <div></div>
     </div>
 </div>
 
-<div style="margin-top: 20px">
+<div id="cadContainer" style="margin-top: 20px;">
     
-    <object id=CADViewX classid=CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}  name="CADViewX" height="850" width="1000">
+    <object id="CADViewX" classid="CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}" name="CADViewX">
         <param NAME="AutoScroll" VALUE="-1">
-        <param NAME="AutoSize" VALUE="-1">
+        <param NAME="AutoSize" VALUE="0">
         <param NAME="AxBorderStyle" VALUE="0">
         <param NAME="Caption" VALUE="CADViewX Control">
         <param NAME="Color" VALUE="8421504">
@@ -27,8 +39,8 @@
         <param NAME="ScreenSnap" VALUE="0">
         <param NAME="SnapBuffer" VALUE="10">
         <param NAME="DoubleBuffered" VALUE="-1">
-        <param NAME="Enabled" VALUE="-1">
-        <param NAME="ToolBarVisible" VALUE="0">
+        <param NAME="Enabled" VALUE="1">
+        <param NAME="ToolBarVisible" VALUE="1">
         <param NAME="LayoutIndex" VALUE="0">
         <param NAME="LayoutsBarVisible" VALUE="0">
         <param NAME="SelfPopupMenu" VALUE="0">
@@ -64,9 +76,28 @@
 
 </div>
 
-<script>
-    var cadViewX = document.getElementById('CADViewX');
-    if (!(cadViewX == null)) {
-        cadViewX.DoToolButtonClick(4);
-    };
+<script type="text/javascript">
+
+    resizeCadViewX();
+
+    function resizeCadViewX() {
+        var container = $("#cadContainer");
+        var cad = $("#CADViewX");
+        var spaceHeight = $(window).innerHeight() - $(document.body).outerHeight();
+        var originalHeight = parseInt(container.css("height").replace("px", ""));
+        var targetHeight = originalHeight + spaceHeight;
+        container.css("height", targetHeight + "px");
+        container.css("width", "500px")
+        setTimeout(function () {
+            var cadViewX = document.getElementById('CADViewX');
+            if (!(cadViewX == null)) {
+                cadViewX.DoToolButtonClick(4);
+            };
+        }, 0);
+    }
+
+    function toggleResizeForm() {
+
+    }
+
 </script>
