@@ -2,55 +2,128 @@
     Layout = null;
 }
 
+<style type="text/css">
+    .modal-body {
+        overflow-y: auto;
+    }
+
+    .always-shown {
+        position: relative;
+    }
+
+        .always-shown > div {
+            position: absolute;
+            padding-top: 20px;
+            left: 20px;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+            .always-shown > div > .table {
+                width: 521px;
+                background-color: #fff;
+                margin-bottom: 0;
+            }
+</style>
+
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch  modal
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-        <div class="modal-body">
-            
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <td>Floor</td>
-                        <td>Area</td>
-                        <td>Item</td>
-                        <td>Condition</td>
-                        <td>New 1</td>
-                        <td>New 2</td>
-                        <td>New 3</td>
-                        <td>New 4</td>
-                    </tr>
-                </thead>
-
-                <tbody id="buildings-list-body">
-                    @for (int i = 0; i <= 50; i++)
-                    {
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="always-shown">
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td width="67">Floor</td>
+                                <td width="64">Area</td>
+                                <td width="61">Item</td>
+                                <td width="97">Condition</td>
+                                <td width="56">New 1</td>
+                                <td width="56">New 2</td>
+                                <td width="56">New 3</td>
+                                <td width="56">New 4</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>Floor @i</td>
-                            <td>Area @i</td>
-                            <td>Item @i</td>
-                            <td>Condition @i</td>
-                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
-                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
-                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
-                            <td style="text-align: center; vertical-align: middle;"><input type="radio" id="@i"></td>
+                            <td width="67">Floor</td>
+                            <td width="64">Area</td>
+                            <td width="61">Item</td>
+                            <td width="97">Condition</td>
+                            <td width="56">New 1</td>
+                            <td width="56">New 2</td>
+                            <td width="56">New 3</td>
+                            <td width="56">New 4</td>
                         </tr>
-                    }    
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody id="buildings-list-body">
+                        @for (int i = 0; i <= 50; i++)
+                        {
+                            <tr>
+                                <td>Floor @i</td>
+                                <td>Area @i</td>
+                                <td>Item @i</td>
+                                <td>Condition @i</td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <input type="radio" id="@i"></td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <input type="radio" id="@i"></td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <input type="radio" id="@i"></td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <input type="radio" id="@i"></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".btn[data-toggle='modal']").click(function () {
+            resizeModalDialog($($(this).data("target")));
+        });
+    });
+
+    function resizeModalDialog(dialogContainer) {
+        if (!dialogContainer) {
+            return;
+        }
+
+        var dialog = dialogContainer.find(".modal-dialog");
+        var content = dialogContainer.find(".modal-body");
+
+        var headerHeight = 58;
+        var footerHeight = 90;
+
+        var dialogVerticalPadding = parseInt(dialog.css("padding-top").replace("px", "")) + parseInt(dialog.css("padding-bottom").replace("px", ""));
+        var contentHeight = $(window).innerHeight() - headerHeight - footerHeight - dialogVerticalPadding;
+
+        content.css("height", contentHeight + "px");
+    }
+</script>
