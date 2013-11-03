@@ -5,7 +5,7 @@
     Layout = null;
 }
 
-<form id="changeSizeWrapper" action="javascript:;">
+<form id="changeSizeWrapper" class="clearfix" action="javascript:;">
     <div class="dropdown pull-right dropup">
         <button class="btn dropdown-toggle" type="button">
             Change grid size
@@ -32,9 +32,8 @@
             </li>
         </ul>
     </div>
-
 </form>
-<div class="body-container">
+<div>
     <div id="cadContainer">
         <object id="CADViewX" classid="CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}" name="CADViewX">
             <param name="AutoScroll" value="-1">
@@ -102,7 +101,7 @@
         } else {
             var spaceHeight = $(window).innerHeight() - $(document.body).outerHeight();
             var originalHeight = parseInt(container.css("height").replace("px", ""));
-            targetHeight = originalHeight + spaceHeight - 40;
+            targetHeight = originalHeight + spaceHeight - 3;
         }
 
         if (targetHeight && targetHeight > 0) {

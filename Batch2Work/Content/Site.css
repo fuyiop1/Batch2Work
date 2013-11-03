@@ -6,6 +6,10 @@
     text-align: right;
 }
 
+.body-container {
+    margin-top: 20px;
+}
+
 /*TreeView*/
 #spliterContainer {
     margin-top: 20px;
@@ -39,9 +43,6 @@
 }
 
 /*ViewerView*/
-.body-container {
-    margin-top: 20px;
-}
 
 #cadContainer {
     margin: 0 auto;
