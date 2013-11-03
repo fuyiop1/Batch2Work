@@ -2,30 +2,6 @@
     Layout = null;
 }
 
-<style type="text/css">
-    .modal-body {
-        overflow-y: auto;
-    }
-
-    .always-shown {
-        position: relative;
-    }
-
-        .always-shown > div {
-            position: absolute;
-            padding-top: 20px;
-            left: 20px;
-            background-color: #fff;
-            z-index: 100;
-        }
-
-            .always-shown > div > .table {
-                width: 521px;
-                background-color: #fff;
-                margin-bottom: 0;
-            }
-</style>
-
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch  modal
 </button>
@@ -104,10 +80,9 @@
 <!-- /.modal -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".btn[data-toggle='modal']").click(function () {
-            resizeModalDialog($($(this).data("target")));
-        });
+
+    $(".btn[data-toggle='modal']").click(function () {
+        resizeModalDialog($($(this).data("target")));
     });
 
     function resizeModalDialog(dialogContainer) {

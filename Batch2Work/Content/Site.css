@@ -1,7 +1,93 @@
 ﻿.navbar-static-top {
-  margin-bottom: 19px;
+    margin-bottom: 19px;
 }
 
-.align-right{
-   text-align: right;
+.align-right {
+    text-align: right;
 }
+
+/*TreeView*/
+#spliterContainer {
+    margin-top: 20px;
+    position: relative;
+}
+
+.loading-wrapper {
+    background-color: #fff;
+    background-image: url(/Content/images/loading.gif);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 100;
+    left: 1px;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+}
+
+#splitter {
+    height: 100%;
+}
+
+#horizontal {
+    height: 100%;
+}
+
+.score-text {
+    text-decoration: line-through;
+}
+
+/*ViewerView*/
+.body-container {
+    margin-top: 20px;
+}
+
+#cadContainer {
+    margin: 0 auto;
+}
+
+#CADViewX {
+    width: 99.8%;
+    border: 1px solid #000;
+    height: 99.8%;
+}
+
+#changeSizeWrapper .input-group {
+    padding-bottom: 5px;
+}
+
+#changeSizeWrapper .dropdown-menu > li {
+    padding: 0 10px;
+}
+
+#changeSizeWrapper .btn-group .btn[type='button'] {
+    padding: 6px 15px;
+}
+
+#changeSizeWrapper .btn-group .btn[type='reset'] {
+    padding: 6px 16px 6px 17px;
+}
+
+/*ModalView*/
+.modal-body {
+    overflow-y: auto;
+}
+
+.always-shown {
+    position: relative;
+}
+
+    .always-shown > div {
+        position: absolute;
+        padding-top: 20px;
+        left: 20px;
+        background-color: #fff;
+        z-index: 100;
+    }
+
+        .always-shown > div > .table {
+            width: 521px;
+            background-color: #fff;
+            margin-bottom: 0;
+        }

@@ -5,89 +5,113 @@
     Layout = null;
 }
 
-<style type="text/css">
-    #cadContainer {
-        height:800px;
-    }
-    #CADViewX {
-        width:99.8%;
-        border:1px solid #000;
-        height:99.8%;
-    }
-</style>
+<form id="changeSizeWrapper" action="javascript:;">
+    <div class="dropdown pull-right dropup">
+        <button class="btn dropdown-toggle" type="button">
+            Change grid size
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="input-group">
+                    <span class="input-group-addon">Width&nbsp;</span>
+                    <input id="widthInput" type="text" class="form-control">
+                </div>
+            </li>
+            <li>
+                <div class="input-group">
+                    <span class="input-group-addon">Height</span>
+                    <input id="heightInput" type="text" class="form-control">
+                </div>
+            </li>
+            <li>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default">Apply</button>
+                  <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-<div>
-    <div class="align-right">
-        <a href="javascript:void(0)" onclick=""><i class="icon-download-alt"></i>  Change grid size</a>
-        <div></div>
+</form>
+<div class="body-container">
+    <div id="cadContainer">
+        <object id="CADViewX" classid="CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}" name="CADViewX">
+            <param name="AutoScroll" value="-1">
+            <param name="AutoSize" value="0">
+            <param name="AxBorderStyle" value="0">
+            <param name="Caption" value="CADViewX Control">
+            <param name="Color" value="8421504">
+            <param name="KeyPreview" value="-1">
+            <param name="PixelsPerInch" value="96">
+            <param name="PrintScale" value="1">
+            <param name="Scaled" value="-1">
+            <param name="DropTarget" value="0">
+            <param name="ScreenSnap" value="0">
+            <param name="SnapBuffer" value="10">
+            <param name="DoubleBuffered" value="-1">
+            <param name="Enabled" value="1">
+            <param name="ToolBarVisible" value="0">
+            <param name="LayoutIndex" value="0">
+            <param name="LayoutsBarVisible" value="0">
+            <param name="SelfPopupMenu" value="0">
+            <param name="IsWithoutBorder" value="0">
+            <param name="Millimetres" value="0">
+            <param name="UseSHXFonts" value="-1">
+            <param name="SearchSHXPaths" value="-1">
+            <param name="DefaultSHXPath" value="">
+            <param name="DefaultSHXFont" value="txt.shx">
+            <param name="SHXSearchPaths" value="">
+            <param name="BackGroundColor" value="16777215">
+            <param name="DrawMode" value="0">
+            <param name="DefaultColor" value="0">
+            <param name="PrinterIndex" value="1">
+            <param name="PaperOrientation" value="1">
+            <param name="BorderWidth" value="0">
+            <param name="VisibleOrbit3D" value="0">
+            <param name="RasterColorDepth" value="3">
+            <param name="ScaleFactor" value="0.997523866826795">
+            <param name="ImageAlign" value="5">
+            <param name="Language" value="English">
+            <param name="PrintViewArea" value="0">
+            <param name="IsShowPrinterSetupDialog" value="0">
+            <param name="HScrollBarVisible" value="0">
+            <param name="VScrollBarVisible" value="0">
+            <param name="Font" value="MS Sans Serif">
+            <param name="Visible" value="0">
+            <param name="Picture" value="-515497352">
+            <param name="PrintingTitle" value="CADViewX printing">
+            <param NAME="FileName" VALUE="@Model.FileUrl">
+        </object>
+
     </div>
 </div>
 
-<div id="cadContainer" style="margin-top: 20px;">
-    
-    <object id="CADViewX" classid="CLSID:{F5F6C0A5-0D6F-41F6-932C-BB1D4F3566D5}" name="CADViewX">
-        <param NAME="AutoScroll" VALUE="-1">
-        <param NAME="AutoSize" VALUE="0">
-        <param NAME="AxBorderStyle" VALUE="0">
-        <param NAME="Caption" VALUE="CADViewX Control">
-        <param NAME="Color" VALUE="8421504">
-        <param NAME="KeyPreview" VALUE="-1">
-        <param NAME="PixelsPerInch" VALUE="96">
-        <param NAME="PrintScale" VALUE="1">
-        <param NAME="Scaled" VALUE="-1">
-        <param NAME="DropTarget" VALUE="0">
-        <param NAME="ScreenSnap" VALUE="0">
-        <param NAME="SnapBuffer" VALUE="10">
-        <param NAME="DoubleBuffered" VALUE="-1">
-        <param NAME="Enabled" VALUE="1">
-        <param NAME="ToolBarVisible" VALUE="1">
-        <param NAME="LayoutIndex" VALUE="0">
-        <param NAME="LayoutsBarVisible" VALUE="0">
-        <param NAME="SelfPopupMenu" VALUE="0">
-        <param NAME="IsWithoutBorder" VALUE="0">
-        <param NAME="Millimetres" VALUE="0">
-        <param NAME="UseSHXFonts" VALUE="-1">
-        <param NAME="SearchSHXPaths" VALUE="-1">
-        <param NAME="DefaultSHXPath" VALUE="">
-        <param NAME="DefaultSHXFont" VALUE="txt.shx">
-        <param NAME="SHXSearchPaths" VALUE="">
-        <param NAME="BackGroundColor" VALUE="16777215">
-        <param NAME="DrawMode" VALUE="0">
-        <param NAME="DefaultColor" VALUE="0">
-        <param NAME="PrinterIndex" VALUE="1">
-        <param NAME="PaperOrientation" VALUE="1">
-        <param NAME="BorderWidth" VALUE="0">
-        <param NAME="VisibleOrbit3D" VALUE="0">
-        <param NAME="RasterColorDepth" VALUE="3">
-        <param NAME="ScaleFactor" VALUE="0.997523866826795">
-        <param NAME="ImageAlign" VALUE="5">
-        <param NAME="Language" VALUE="English">
-        <param NAME="PrintViewArea" VALUE="0">
-        <param NAME="IsShowPrinterSetupDialog" VALUE="0">
-        <param NAME="HScrollBarVisible" VALUE="0">
-        <param NAME="VScrollBarVisible" VALUE="0">
-        <param NAME="Font" VALUE="MS Sans Serif">
-        <param NAME="Visible" VALUE="0">
-        <param NAME="Picture" VALUE="-515497352">
-        <param NAME="PrintingTitle" VALUE="CADViewX printing">
-        <param NAME="FileName" VALUE="@Model.FileUrl">
-
-    </object>
-
-</div>
-
 <script type="text/javascript">
-
     resizeCadViewX();
+    initChangeSizeEvents();
 
-    function resizeCadViewX() {
+    function resizeCadViewX(options) {
         var container = $("#cadContainer");
-        var cad = $("#CADViewX");
-        var spaceHeight = $(window).innerHeight() - $(document.body).outerHeight();
-        var originalHeight = parseInt(container.css("height").replace("px", ""));
-        var targetHeight = originalHeight + spaceHeight;
-        container.css("height", targetHeight + "px");
-        container.css("width", "500px")
+        var targetHeight;
+        var targetWidth;
+
+        if (options) {
+            targetHeight = options.height;
+            targetWidth = options.width;
+        } else {
+            var spaceHeight = $(window).innerHeight() - $(document.body).outerHeight();
+            var originalHeight = parseInt(container.css("height").replace("px", ""));
+            targetHeight = originalHeight + spaceHeight - 40;
+        }
+
+        if (targetHeight && targetHeight > 0) {
+            container.css("height", targetHeight + "px");
+        }
+        if (targetWidth && targetWidth > 0) {
+            container.css("width", targetWidth + "px")
+        }
+
         setTimeout(function () {
             var cadViewX = document.getElementById('CADViewX');
             if (!(cadViewX == null)) {
@@ -96,8 +120,35 @@
         }, 0);
     }
 
-    function toggleResizeForm() {
+    function initChangeSizeEvents() {
+        var changeSizeWrapper = $("#changeSizeWrapper");
+        var widthInput = $("#widthInput");
+        var heightInput = $("#heightInput");
 
+        changeSizeWrapper.find(".dropdown-toggle").click(function () {
+            var sender = $(this);
+            var dropdown = sender.siblings(".dropdown-menu");
+            if (sender.siblings(".dropdown-menu:visible").size() > 0) {
+                dropdown.hide();
+            } else {
+                var container = $("#cadContainer");
+                widthInput.val(container.css("width").replace("px", ""));
+                heightInput.val(container.css("height").replace("px", ""));
+
+                widthInput.attr("value", widthInput.val());
+                heightInput.attr("value", heightInput.val());
+                dropdown.show();
+            }
+        });
+
+        changeSizeWrapper.find(".btn-group .btn[type='button']").click(function () {
+            var options = {
+                width: parseInt(widthInput.val()),
+                height: parseInt(heightInput.val())
+            };
+            resizeCadViewX(options);
+            changeSizeWrapper.find(".dropdown-toggle").trigger("click");
+        });
     }
 
 </script>
