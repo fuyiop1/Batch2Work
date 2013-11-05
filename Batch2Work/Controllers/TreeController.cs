@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Globalization;
 using System.Web.Mvc;
 using Batch2Work.Helpers;
 using Batch2Work.Models;
@@ -17,9 +14,9 @@ namespace Batch2Work.Controllers
             return View("Index", TreeModel);
         }
 
-        public virtual ActionResult GetDetails()
+        public virtual ActionResult Details(int id)
         {
-            return View("Details");
+            return View("Details", new DetailsModel {Header = id.ToString(CultureInfo.InvariantCulture)});
         }
 
         private TreeModel TreeModel

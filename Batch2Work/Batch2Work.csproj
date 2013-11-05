@@ -139,6 +139,7 @@
     <Compile Include="Helpers\SampleDataHelper.cs" />
     <Compile Include="Helpers\StringExt.cs" />
     <Compile Include="Models\ActionGridItem.cs" />
+    <Compile Include="Models\DetailsModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\TreeModel.cs" />
     <Compile Include="Models\ViewerModel.cs" />

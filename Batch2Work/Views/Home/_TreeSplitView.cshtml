@@ -26,16 +26,53 @@
 
                         horizontalPanes.Add()
                             .HtmlAttributes(new { id = "center-pane" })
-                            .LoadContentFrom("GetDetails", "Tree");
-    
+                            .Content(@<div></div>);
+
                     }).ToHtmlString()
                 );
         })
-      )
+              )
 </div>
 
 <script type="text/javascript">
 
+    var building = building ||
+    {
+        _wireUpNodeClickHandler: function(nodeSelctor) {
+
+            $(document).on("click", nodeSelctor, function(event) {
+
+                // Stop default event propogation
+                event.preventDefault();
+
+                // Get link
+                var href = $(this).attr('href');
+
+                // Refresh content
+                var splitter = $("#splitter").data("kendoSplitter");
+                splitter.ajaxRequest("#center-pane", href);
+
+                return false;
+            });
+        },
+
+        initItemNodeHandler: function() {
+            building._wireUpNodeClickHandler(".itemNode");
+        },
+
+        init: function() {
+
+            // Init tree node selection
+            building._wireUpNodeClickHandler(".itemNode");
+            building._wireUpNodeClickHandler(".floorNode");
+            building._wireUpNodeClickHandler(".areaNode");
+            building._wireUpNodeClickHandler(".buildingNode");
+
+            building.initItemNodeHandler();
+        }
+    };
+
+    building.init();
     resizeSplitter();
 
     function resizeSplitter() {
@@ -50,18 +87,19 @@
 
     function splitter_ContentLoad() {
         splitterLoadedContent++;
-        if (splitterLoadedContent == 2) {
+        if (splitterLoadedContent == 1) {
             processText();
             hideLoading();
             splitterLoadedContent = 0;
+            wireUpNodeClickHandler(".itemNode");
         }
     }
 
     function processText() {
-        $("img.k-image[src='@Url.Content("~/Content/images/flag_red.png")']").each(function () {
+        $("img.k-image[src='@Url.Content("~/Content/images/flag_red.png")']").each(function() {
             var sender = $(this);
             sender.siblings(".text-container").addClass("score-text");
-        })
+        });
     }
 
     function hideLoading() {

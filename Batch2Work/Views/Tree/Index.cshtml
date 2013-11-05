@@ -8,8 +8,7 @@
 <div>
 @(Html.Kendo().TreeView()
     .Name("treeview")
-    //.Template("displayNode")
-    .Template("<span class='text-container' title='#= item.text #'>#= item.text #</span>")
+    //.Template("<span class='text-container' title='#= item.text #'>#= item.text #</span>")
     .Items(root =>
     {
         foreach (var buildingNode in Model.RootNodes)
@@ -18,6 +17,7 @@
                 .ImageUrl(Url.Content(buildingNode.ImageUrl))
                 .SpriteCssClasses("folder")
                 .Expanded(true)
+                .LinkHtmlAttributes(new { @class = "buildingNode" })
                 .Items(floors =>
                 {
                     foreach (var floorNode in buildingNode.ChildNodes)
@@ -26,6 +26,7 @@
                             .ImageUrl(Url.Content(floorNode.ImageUrl))
                             .Expanded(true)
                             .SpriteCssClasses("folder")
+                            .LinkHtmlAttributes(new { @class = "floorNode" })
                             .Items(areas =>
                             {
                                 foreach (var areaNode in floorNode.ChildNodes)
@@ -34,6 +35,7 @@
                                         .ImageUrl(Url.Content(areaNode.ImageUrl))
                                         .Expanded(true)
                                         .SpriteCssClasses("folder")
+                                        .LinkHtmlAttributes(new { @class = "areaNode" })
                                         .Items(items =>
                                         {
                                             foreach (var itemNode in areaNode.ChildNodes)
@@ -42,6 +44,8 @@
                                                     .ImageUrl(Url.Content(itemNode.ImageUrl))
                                                     .Expanded(true)
                                                     .SpriteCssClasses("folder")
+                                                    .LinkHtmlAttributes(new { @class = "itemNode" })
+                                                    .Action("Details", "Tree", new { id = itemNode.Id });
                                                 ;
                                             }
 

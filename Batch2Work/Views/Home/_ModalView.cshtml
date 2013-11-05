@@ -12,7 +12,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">1 Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title Modal title 2</h4>
             </div>
             <div class="always-shown">
                 <div>
@@ -82,10 +82,7 @@
 <script type="text/javascript">
 
     $(".btn[data-toggle='modal']").click(function () {
-        var sender = $(this);
-        setTimeout(function () {
-            resizeModalDialog($(sender.data("target")));
-        }, 160);
+        resizeModalDialog($($(this).data("target")));
     });
 
     function resizeModalDialog(dialogContainer) {
@@ -96,15 +93,11 @@
         var dialog = dialogContainer.find(".modal-dialog");
         var content = dialogContainer.find(".modal-body");
 
-        var hearder = dialogContainer.find(".modal-header");
-        var footer = dialogContainer.find(".modal-footer");
-
-        var dialogContainerBorder = 2;
-        var headerHeight = hearder.outerHeight() + parseInt(hearder.css("margin-top").replace("px", "")) + parseInt(hearder.css("margin-bottom").replace("px", ""));
-        var footerHeight = footer.outerHeight() + parseInt(footer.css("margin-top").replace("px", "")) + parseInt(footer.css("margin-bottom").replace("px", ""));
+        var headerHeight = 58;
+        var footerHeight = 90;
 
         var dialogVerticalPadding = parseInt(dialog.css("padding-top").replace("px", "")) + parseInt(dialog.css("padding-bottom").replace("px", ""));
-        var contentHeight = $(window).innerHeight() - headerHeight - footerHeight - dialogVerticalPadding - dialogContainerBorder;
+        var contentHeight = $(window).innerHeight() - headerHeight - footerHeight - dialogVerticalPadding;
 
         content.css("height", contentHeight + "px");
     }
