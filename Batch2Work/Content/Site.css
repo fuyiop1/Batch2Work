@@ -38,7 +38,7 @@
     height: 100%;
 }
 
-.score-text {
+.k-item .k-link.score-text {
     text-decoration: line-through;
 }
 

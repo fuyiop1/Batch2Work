@@ -95,9 +95,12 @@
     }
 
     function processText() {
+        $(".k-item .k-link").each(function () {
+            $(this).attr("title", $(this).text())
+        });
         $("img.k-image[src='@Url.Content("~/Content/images/flag_red.png")']").each(function() {
             var sender = $(this);
-            sender.siblings(".text-container").addClass("score-text");
+            sender.parent().addClass("score-text");
         });
     }
 
